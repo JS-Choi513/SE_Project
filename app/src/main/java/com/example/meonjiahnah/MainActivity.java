@@ -25,18 +25,15 @@ public class MainActivity extends AppCompatActivity /*implements AbsListView.OnS
     private boolean mLockListView = false;          // 데이터 불러올때 중복안되게 하기위한 변수
     private String[] county = {"서울특별시","부산광역시","대구광역시","인천광역시","광주광역시","대전광역시",
                                "울산광역시","세종특별자치시"};
-    private String[] state = {"경기도","강원도","충정북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주특별자치도"};
+    private String[] state = {"경기도","강원도","충청북도","충청남도","전라북도","전라남도","경상북도","경상남도","제주특별자치도"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
         listView = (ListView) findViewById(R.id.listview);
         progressBar = (ProgressBar) findViewById(R.id.progressbar);
-
         list = new ArrayList<String>();
-
         adapter = new ListViewAdapter(this, list);
         listView.setAdapter(adapter);
 

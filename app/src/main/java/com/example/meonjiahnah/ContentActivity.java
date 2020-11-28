@@ -37,6 +37,7 @@ public class ContentActivity extends AppCompatActivity {
             "의정부시","동두천시","구리시","남양주시","파주시","양주시","포천시","연천군","가평군"};
     private String[] gangwondo = {"춘천시","원주시","강릉시","동해시","태백시","속초시","삼척시","홍천군","횡성군","영월군","평창군",
             "정선군","철원군","화천군","양구군","인제군","고성군","양양군"};
+
     private String[] north_chungcheong = {"청주시","충주시","제천시","보은군","옥천군","영동군","증평군","진천군","괴산군","음성군","단양군"};
     private String[] south_chungcheong = {"천안시","공주시","보령시","아산시","서산시","논산시","계룡시","당진시","금산군","부여군","서천군","청양군",
                                           "홍성군","예산군","태안군"};
@@ -74,8 +75,22 @@ public class ContentActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(),
                         adapter.getItem(position),
                         Toast.LENGTH_LONG).show();
-                Intent intent = new Intent(ContentActivity.this, MapActivity.class);
-                intent.putExtra("key",adapter.getItem(position));
+                Intent intent;
+                String regioninfo;
+                if(adapter.getItem(position).equals("수원시") ||adapter.getItem(position).equals("성남시")||adapter.getItem(position).equals("청주시")||adapter.getItem(position).equals("천안시")||adapter.getItem(position).equals("전주시")||
+                   adapter.getItem(position).equals("포항시") ||adapter.getItem(position).equals("창원시")||adapter.getItem(position).equals("안양시")||adapter.getItem(position).equals("안산시")||adapter.getItem(position).equals("용인시")||
+                   adapter.getItem(position).equals("고양시")){
+                    System.out.println("왜않되냐고");
+                    intent = new Intent(ContentActivity.this, ContentActivity2.class);
+                    regioninfo = adapter.getItem(position);
+                }
+                else{
+                    intent = new Intent(ContentActivity.this, MapActivity.class);
+                    System.out.println("왜않되");
+                    regioninfo = selectstate + " " + adapter.getItem(position);
+                }
+
+                intent.putExtra("key",regioninfo);
                 startActivity(intent);
                 finish();
             }
@@ -122,7 +137,7 @@ public class ContentActivity extends AppCompatActivity {
                 region = gangwondo;
                 break;
             case "충청북도":
-                region = north_chungcheong;
+                region =north_chungcheong;
                 break;
             case "충청남도":
                 region = south_chungcheong;
