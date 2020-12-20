@@ -12,11 +12,9 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Administrator on 2016-10-13.
- */
+
 public class ListViewAdapter extends BaseAdapter {
-    private LayoutInflater inflate;
+    private LayoutInflater inflate;//XML 정의된 리소스를 뷰의 객체로 반환해주는 역할
     private ViewHolder viewHolder;
     private ArrayList<String> list;
 
